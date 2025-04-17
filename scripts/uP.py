@@ -6,11 +6,21 @@ from src.functions.upParser import createParser
 def main() -> None:
 
     args = createParser()
-    sm = uPStateMachine()
+    sm   = uPStateMachine()
 
     sm.presentState = sm.State1
-    sm.presentState()
-    sm.presentState()
+
+    if args.genPDF:
+        sm.typeProcess  = 'pdf'
+    elif args.genMD:
+        sm.typeProcess  = 'md'
+
+    sm.rubric       = args.rubric
+    sm.inDir        = args.inDir
+    sm.outDir       = args.outDir
+
+    while not sm.endProcess:
+        sm.presentState()
 
 if __name__ == '__main__':
     main()
