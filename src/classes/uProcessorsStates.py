@@ -6,9 +6,11 @@ class uProcessorsStates:
         self.outDir = None
         self.presentState = None
 
-    def State1(self):
 
-        print('this is the first state')
+    def State1(self):
+       
+        print('this is the first state, soon to assign the second state')
+        self.presentState = self.State2
         
     def State2(self):
 

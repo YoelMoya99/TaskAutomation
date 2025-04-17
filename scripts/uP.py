@@ -8,16 +8,9 @@ def main() -> None:
     args = createParser()
     sm = uPStateMachine()
 
-    var = 10
-    match var:
-        case 1:
-            print(1)
-        case 2:
-            print(2)
-        case _:
-            print('general')
-
-
+    sm.presentState = sm.State1
+    sm.presentState()
+    sm.presentState()
 
 if __name__ == '__main__':
     main()
