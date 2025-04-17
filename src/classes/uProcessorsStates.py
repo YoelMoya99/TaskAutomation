@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 
 class uProcessorsStates:
@@ -70,7 +71,32 @@ class uProcessorsStates:
         '''
         This state creates the files 
         '''
+        for filename in os.listdir(self.inDir):
+            if filename.endswith(".md"):
+                pathMD = os.path.join(self.inDir, filename)
+                filenamePDF = filename.rsplit(".", 1)[0] + ".pdf"
+                pathPDF = os.path.join(self.outDir, filenamePDF)
 
-        print('this is the Third state')
+                subprocess.run(
+                    [
+                        "pandoc", pathMD,
+                        "-o", pathPDF,
+                        "--pdf-engine=xelatex",
+                        "--columns=1000",
+                        "--listings",
+                        "-V", "geometry:top=2cm,left=2.5cm,right=2.5cm,bottom=2cm"
+                    ],
+                    check=True
+                    )
+                
+                print(
+                    f'{filenamePDF} has been created!'
+                    )
+
+        print(
+            'All pdfs have been created!\n'
+            'Have a nice time uploading the files :)'
+            )
+
         self.endProcess = True #added for TESTING
         
