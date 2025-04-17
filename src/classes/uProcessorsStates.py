@@ -46,9 +46,24 @@ class uProcessorsStates:
         '''
         This state creates the files for review
         '''
+        with open(self.rubric) as rubric:
+            template = rubric.read()
 
-        print('this is the second state')
-        self.endProcess = True #added for TESTING
+            for item in os.listdir(self.inDir):
+                itemPath = os.path.join(self.inDir, item)
+    
+                if os.path.isdir(itemPath):
+                    fileName = item + '_retroalimentacion.md'
+                    filePath = os.path.join(self.outDir, fileName)
+    
+                    with open(filePath, 'w') as file:
+                        file.write(template)
+
+        self.endProcess = True
+        print(
+            'All the rubrics are created!\n'
+            'Have a nice time grading assignments :)'
+            )
         
     def State3(self):
 
