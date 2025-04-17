@@ -71,12 +71,54 @@ def create_parser():
 
     # Second command definition with respective flags.
     # ------------------------------------------------------------------------
-    command2_parser = subparsers.add_parser('format', help='Second command')
+    command2_parser = subparsers.add_parser(
+        'format', 
+        help='Format of the final plot'
+        )
     
-    command2_group = command2_parser.add_mutually_exclusive_group(required=True)
-    command2_group.add_argument('--optionA', help="Option A for command2")
-    command2_group.add_argument('--optionB', help="Option B for command2")
-
+    command2_group = command2_parser.add_mutually_exclusive_group(
+        required=True
+        )
+    command2_group.add_argument(
+        '--txtsize',
+        help="Points of the letter and axis numbers"
+        )
+    command2_group.add_argument(
+        '--width',
+        help="Width in inches of the figure"
+        )
+    command2_group.add_argument(
+        '--title',
+        help="LaTeX compatible title of the plot"
+        )
+    command2_group.add_argument(
+        '--xlabel',
+        help="LaTeX compatible x axis label of the plot"
+        )
+    command2_group.add_argument(
+        '--ylabel',
+        help="LaTeX compatible y axis label of the plot"
+        )
+ 
+    # Third command definition with respective flags.
+    # ------------------------------------------------------------------------
+    command3_parser = subparsers.add_parser(
+        'build', 
+        help='Generates the template for the config file or the plot'
+        )
+    
+    command3_group = command3_parser.add_mutually_exclusive_group(
+        required=True
+        )
+    command3_group.add_argument(
+        '--config_template',
+        help="Generates the config file with default values"
+        )
+    command3_group.add_argument(
+        '--pdf',
+        help="Generates the pdf file with default values"
+        )
+ 
     # Return Namespace with the parsed args.
     # ------------------------------------------------------------------------
 

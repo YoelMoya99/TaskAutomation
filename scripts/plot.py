@@ -4,11 +4,9 @@ from src.functions.PlotParser import create_parser as cli_args
 
 def main() -> None:
     args = cli_args()
-    if args.local_config:
-        print('Theres local config')
-    if args.input_file:
-        print('Theres input file')
-
+    print('\nTesting command line arguments\n')
+    print('This arguments where inputted')
+    print(args)
 
 if __name__ == '__main__':
 
