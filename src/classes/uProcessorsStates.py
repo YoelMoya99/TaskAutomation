@@ -84,7 +84,8 @@ class uProcessorsStates:
                         "--pdf-engine=xelatex",
                         "--columns=1000",
                         "--listings",
-                        "-V", "geometry:top=2cm,left=2.5cm,right=2.5cm,bottom=2cm"
+                        "-V", "geometry:top=2cm,left=2cm,right=2cm,bottom=2cm",
+                        "-V", "fontsize=12pt"
                     ],
                     check=True
                     )
