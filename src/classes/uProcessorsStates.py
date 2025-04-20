@@ -59,6 +59,7 @@ class uProcessorsStates:
     
                     with open(filePath, 'w') as file:
                         file.write(template)
+                        print(f'{fileName} was created!')
 
         self.endProcess = True
         print(
