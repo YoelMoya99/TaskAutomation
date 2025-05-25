@@ -1,5 +1,6 @@
 import os
 import subprocess
+import re
 
 
 class uProcessorsStates:
@@ -58,6 +59,9 @@ class uProcessorsStates:
                     filePath = os.path.join(self.outDir, fileName)
     
                     with open(filePath, 'w') as file:
+                        splitName = re.findall(r'[A-Z][a-z]*', item[:-2]) # Separate name
+                        name = ' '.join(splitName)
+                        file.write(f'# Estudiante: {name}\n')
                         file.write(template)
                         print(f'{fileName} was created!')
 
